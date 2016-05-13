@@ -40,32 +40,32 @@
 //包含文件
 
 //平台定义
-#include "..\..\全局定义\Platform.h"
-#include "..\..\消息定义\CMD_Correspond.h"
-#include "..\..\消息定义\CMD_LogonServer.h"
+#include "..\..\..\全局定义\Platform.h"
+#include "..\..\..\消息定义\CMD_Correspond.h"
+#include "..\..\..\消息定义\CMD_LogonServer.h"
 
 //组件定义
-#include "..\..\公共组件\服务核心\ServiceCoreHead.h"
-#include "..\..\服务器组件\内核引擎\KernelEngineHead.h"
+#include "..\..\..\公共组件\服务核心\ServiceCoreHead.h"
+#include "..\..\..\服务器组件\内核引擎\KernelEngineHead.h"
 
 //////////////////////////////////////////////////////////////////////////////////
 //链接代码
 
 #ifndef _DEBUG
 #ifndef _UNICODE
-	#pragma comment (lib,"../../链接库/Ansi/ServiceCore.lib")
-	#pragma comment (lib,"../../链接库/Ansi/KernelEngine.lib")
+	#pragma comment (lib,"../../../链接库/Ansi/ServiceCore.lib")
+	#pragma comment (lib,"../../../链接库/Ansi/KernelEngine.lib")
 #else
-	#pragma comment (lib,"../../链接库/Unicode/ServiceCore.lib")
-	#pragma comment (lib,"../../链接库/Unicode/KernelEngine.lib")
+	#pragma comment (lib,"../../../链接库/Unicode/ServiceCore.lib")
+	#pragma comment (lib,"../../../链接库/Unicode/KernelEngine.lib")
 #endif
 #else
 #ifndef _UNICODE
-	#pragma comment (lib,"../../链接库/Ansi/ServiceCoreD.lib")
-	#pragma comment (lib,"../../链接库/Ansi/KernelEngineD.lib")
+	#pragma comment (lib,"../../../链接库/Ansi/ServiceCoreD.lib")
+	#pragma comment (lib,"../../../链接库/Ansi/KernelEngineD.lib")
 #else
-	#pragma comment (lib,"../../链接库/Unicode/ServiceCoreD.lib")
-	#pragma comment (lib,"../../链接库/Unicode/KernelEngineD.lib")
+	#pragma comment (lib,"../../../链接库/Unicode/ServiceCoreD.lib")
+	#pragma comment (lib,"../../../链接库/Unicode/KernelEngineD.lib")
 #endif
 #endif
 

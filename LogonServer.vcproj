@@ -33,7 +33,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="../../../ÔËÐÐ/Debug/Ansi/LogonServer.exe"
+				OutputFile="../../../../ÔËÐÐ/Debug/Ansi/LogonServer.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"
@@ -147,7 +147,7 @@ copy /y ..\..\..\ÔËÐÐ\Release\Ansi\$(TargetFileName) ..\..\..\·¢²¼×é¼þ\·þÎñÆ÷×é¼
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				OutputFile="../../../ÔËÐÐ/Debug/Unicode/ShootGameServer.exe"
+				OutputFile="../../../../ÔËÐÐ/Debug/Unicode/ShootGameServer.exe"
 				LinkIncremental="2"
 				GenerateDebugInformation="TRUE"
 				SubSystem="2"

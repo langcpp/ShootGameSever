@@ -1,6 +1,6 @@
 #include "StdAfx.h"
 #include "InitParameter.h"
-
+#include "Resource.h"
 //////////////////////////////////////////////////////////////////////////////////
 
 //服务时间
@@ -83,6 +83,10 @@ VOID CInitParameter::LoadInitParameter()
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("ServiceName"),NULL,m_szServerName,CountArray(m_szServerName));
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("ServiceAddr"),NULL,m_ServiceAddress.szAddress,CountArray(m_ServiceAddress.szAddress));
 
+	//从对话框中读取IP地址及端口号
+	CIPAddressCtrl * m_IPAddress = (CIPAddressCtrl *)GetDlgItem(IDC_SEVER_ADDRESS_IP);
+	CEdit * m_Port = (CEdit *)GetDlgItem(IDC_EDIT_PORT);
+	m_wServicePort = m_Port->GetWindowText()
 	//协调信息
 	m_wCorrespondPort=IniData.ReadInt(TEXT("Correspond"),TEXT("ServicePort"),m_wCorrespondPort);
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("CorrespondAddr"),NULL,m_CorrespondAddress.szAddress,CountArray(m_CorrespondAddress.szAddress));

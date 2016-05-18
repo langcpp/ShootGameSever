@@ -45,6 +45,28 @@ BOOL CLogonServerDlg::OnInitDialog()
 	//设置组件
 	m_ServiceUnits.SetServiceUnitsSink(this);
 
+	m_IPAddress = (CIPAddressCtrl *)GetDlgItem(IDC_SEVER_ADDRESS_IP);
+	m_Port = (CEdit *)GetDlgItem(IDC_EDIT_PORT);
+	m_Port->SetWindowText(_T("8888"));
+	//取得当前系统的IP地址
+	WORD wVersionRequested;   
+	WSADATA wsaData;   
+	char name[255];  
+	DWORD ip;   
+	PHOSTENT hostinfo;     
+	wVersionRequested = MAKEWORD(2, 0);         
+	if (WSAStartup(wVersionRequested, &wsaData) == 0)  
+	{          
+		if(gethostname(name, sizeof(name)) == 0)      
+		{    
+			if((hostinfo = gethostbyname(name)) != NULL)    
+			{      
+				ip = *(DWORD *)hostinfo->h_addr_list[0]; 
+			}      
+		}        
+		WSACleanup( );  
+	} 
+	m_IPAddress->SetAddress(ntohl(ip));
 	return TRUE;
 }
 

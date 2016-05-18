@@ -157,10 +157,7 @@ copy /y ..\..\..\ÔËÐÐ\Release\Ansi\$(TargetFileName) ..\..\..\·¢²¼×é¼þ\·þÎñÆ÷×é¼
 				PreprocessorDefinitions="_DEBUG"
 				MkTypLibCompatible="FALSE"/>
 			<Tool
-				Name="VCPostBuildEventTool"
-				CommandLine="mkdir ..\..\..\·¢²¼×é¼þ\·þÎñÆ÷×é¼þ\Debug\Unicode
-copy /y ..\..\..\ÔËÐÐ\Debug\Unicode\$(TargetFileName) ..\..\..\·¢²¼×é¼þ\·þÎñÆ÷×é¼þ\Debug\Unicode\$(TargetFileName)
-"/>
+				Name="VCPostBuildEventTool"/>
 			<Tool
 				Name="VCPreBuildEventTool"/>
 			<Tool

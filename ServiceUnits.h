@@ -69,9 +69,7 @@ protected:
 protected:
 	CTimerEngineHelper				m_TimerEngine;						//时间引擎
 	CAttemperEngineHelper			m_AttemperEngine;					//调度引擎
-	CDataBaseEngineHelper			m_DataBaseEngine;					//数据引擎
 	CTCPNetworkEngineHelper			m_TCPNetworkEngine;					//网络引擎
-	CTCPSocketServiceHelper			m_TCPSocketService;					//协调服务
 
 	//接口变量
 protected:

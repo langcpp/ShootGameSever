@@ -141,7 +141,6 @@ bool CServiceUnits::InitializeService()
 	//调度回调
 	m_AttemperEngineSink.m_pInitParameter=&m_InitParameter;
 	m_AttemperEngineSink.m_pITimerEngine=m_TimerEngine.GetInterface();
-	m_AttemperEngineSink.m_pIDataBaseEngine=m_DataBaseEngine.GetInterface();
 	m_AttemperEngineSink.m_pITCPNetworkEngine=m_TCPNetworkEngine.GetInterface();
 
 

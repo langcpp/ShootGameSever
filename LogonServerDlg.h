@@ -15,6 +15,8 @@ class CLogonServerDlg : public CDialog, public IServiceUnitsSink
 protected:
 	CServiceUnits					m_ServiceUnits;						//服务单元
 	CTraceServiceControl			m_TraceServiceControl;				//追踪窗口
+	CIPAddressCtrl*					m_IPAddress;
+	CEdit*							m_Port;
 
 	//函数定义
 public:

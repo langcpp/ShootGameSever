@@ -83,10 +83,27 @@ VOID CInitParameter::LoadInitParameter()
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("ServiceName"),NULL,m_szServerName,CountArray(m_szServerName));
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("ServiceAddr"),NULL,m_ServiceAddress.szAddress,CountArray(m_ServiceAddress.szAddress));
 
-	//从对话框中读取IP地址及端口号
-	CIPAddressCtrl * m_IPAddress = (CIPAddressCtrl *)GetDlgItem(IDC_SEVER_ADDRESS_IP);
-	CEdit * m_Port = (CEdit *)GetDlgItem(IDC_EDIT_PORT);
-	m_wServicePort = m_Port->GetWindowText()
+	//取得当前系统的IP地址
+	WORD wVersionRequested;   
+	WSADATA wsaData;   
+	char name[255];  
+	char ip[32];
+	PHOSTENT hostinfo;     
+	wVersionRequested = MAKEWORD(2, 0);         
+	if (WSAStartup(wVersionRequested, &wsaData) == 0)  
+	{          
+		if(gethostname(name, sizeof(name)) == 0)      
+		{    
+			if((hostinfo = gethostbyname(name)) != NULL)    
+			{      
+				//ip = *(DWORD *)hostinfo->h_addr_list[0]; 
+				strcpy(ip,inet_ntoa(*(in_addr*)*hostinfo->h_addr_list));  
+			}      
+		}        
+		WSACleanup( );  
+	} 
+	CopyMemory(m_ServiceAddress.szAddress, ip, 32);
+	m_wServicePort = 8888;
 	//协调信息
 	m_wCorrespondPort=IniData.ReadInt(TEXT("Correspond"),TEXT("ServicePort"),m_wCorrespondPort);
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("CorrespondAddr"),NULL,m_CorrespondAddress.szAddress,CountArray(m_CorrespondAddress.szAddress));

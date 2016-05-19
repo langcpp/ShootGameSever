@@ -46,7 +46,9 @@ BOOL CLogonServerDlg::OnInitDialog()
 	m_ServiceUnits.SetServiceUnitsSink(this);
 
 	m_IPAddress = (CIPAddressCtrl *)GetDlgItem(IDC_SEVER_ADDRESS_IP);
+	m_IPAddress->EnableWindow(FALSE);
 	m_Port = (CEdit *)GetDlgItem(IDC_EDIT_PORT);
+	m_Port->EnableWindow(FALSE);
 	m_Port->SetWindowText(_T("8888"));
 	//取得当前系统的IP地址
 	WORD wVersionRequested;   

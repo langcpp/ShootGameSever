@@ -23,7 +23,6 @@ CAttemperEngineSink::CAttemperEngineSink()
 
 	//组件变量
 	m_pITimerEngine=NULL;
-	m_pIDataBaseEngine=NULL;
 	m_pITCPNetworkEngine=NULL;
 
 	return;
@@ -84,7 +83,6 @@ bool CAttemperEngineSink::OnAttemperEngineConclude(IUnknownEx * pIUnknownEx)
 
 	//组件变量
 	m_pITimerEngine=NULL;
-	m_pIDataBaseEngine=NULL;
 	m_pITCPNetworkEngine=NULL;
 
 	//删除数据
@@ -105,50 +103,7 @@ bool CAttemperEngineSink::OnEventAttemperData(WORD wRequestID, VOID * pData, WOR
 //时间事件
 bool CAttemperEngineSink::OnEventTimer(DWORD dwTimerID, WPARAM wBindParam)
 {
-	switch (dwTimerID)
-	{
-	case IDI_COLLECT_ONLINE_INFO:	//统计在线
-		{
-			//变量定义
-			DBR_GP_OnLineCountInfo OnLineCountInfo;
-			ZeroMemory(&OnLineCountInfo,sizeof(OnLineCountInfo));
-
-			//获取总数
-			OnLineCountInfo.dwOnLineCountSum=m_ServerListManager.CollectOnlineInfo();
-
-			//获取类型
-			POSITION KindPosition=NULL;
-			do
-			{
-				//获取类型
-				CGameKindItem * pGameKindItem=m_ServerListManager.EmunGameKindItem(KindPosition);
-
-				//设置变量
-				if (pGameKindItem!=NULL)
-				{
-					WORD wKindIndex=OnLineCountInfo.wKindCount++;
-					OnLineCountInfo.OnLineCountKind[wKindIndex].wKindID=pGameKindItem->m_GameKind.wKindID;
-					OnLineCountInfo.OnLineCountKind[wKindIndex].dwOnLineCount=pGameKindItem->m_GameKind.dwOnLineCount;
-				}
-
-				//溢出判断
-				if (OnLineCountInfo.wKindCount>=CountArray(OnLineCountInfo.OnLineCountKind)
-				{
-					ASSERT(FALSE);
-					break;
-				}
-
-			} while (KindPosition!=NULL);
-
-			//发送请求
-			WORD wHeadSize=sizeof(OnLineCountInfo)-sizeof(OnLineCountInfo.OnLineCountKind);
-			WORD wSendSize=wHeadSize+OnLineCountInfo.wKindCount*sizeof(OnLineCountInfo.OnLineCountKind[0]);
-			m_pIDataBaseEngine->PostDataBaseRequest(DBR_GP_ONLINE_COUNT_INFO,0,&OnLineCountInfo,wSendSize);
-
-			return true;
-		}
-	}
-
+	
 	return false;
 }
 

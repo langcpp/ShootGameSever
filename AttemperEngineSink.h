@@ -56,12 +56,6 @@ protected:
 	ITimerEngine *					m_pITimerEngine;					//时间引擎
 	IDataBaseEngine *				m_pIDataBaseEngine;					//数据引擎
 	ITCPNetworkEngine *				m_pITCPNetworkEngine;				//网络引擎
-	ITCPSocketService *				m_pITCPSocketService;				//协调服务
-
-	//视频配置
-protected:
-	WORD							m_wAVServerPort;					//视频端口
-	DWORD							m_dwAVServerAddr;					//视频地址
 
 	//函数定义
 public:
@@ -121,15 +115,6 @@ protected:
 	//登录处理
 	bool OnTCPNetworkMainPCLogon(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
 
-	//网络事件
-protected:
-	//I D 登录
-	bool OnTCPNetworkSubPCLogonGameID(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//帐号登录
-	bool OnTCPNetworkSubPCLogonAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//帐号注册
-	bool OnTCPNetworkSubPCRegisterAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-
 	//辅助函数
 protected:
 	//版本检测
@@ -141,21 +126,6 @@ protected:
 protected:
 	//发送类型
 	VOID SendGameTypeInfo(DWORD dwSocketID);
-	//发送种类
-	VOID SendGameKindInfo(DWORD dwSocketID);
-	//发送节点
-	VOID SendGameNodeInfo(DWORD dwSocketID, WORD wKindID);
-	//发送定制
-	VOID SendGamePageInfo(DWORD dwSocketID, WORD wKindID);
-	//发送房间
-	VOID SendGameServerInfo(DWORD dwSocketID, WORD wKindID);
-
-	//手机列表
-protected:
-	//发送类型
-	VOID SendMobileKindInfo(DWORD dwSocketID, WORD wModuleID);
-	//发送房间
-	VOID SendMobileServerInfo(DWORD dwSocketID, WORD wModuleID);
 };
 
 //////////////////////////////////////////////////////////////////////////////////

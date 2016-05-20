@@ -329,6 +329,9 @@ copy /y ..\..\..\运行\Release\Unicode\$(TargetFileName) ..\..\..\发布组件\服务器
 			<File
 				RelativePath=".\Stdafx.h">
 			</File>
+			<File
+				RelativePath=".\String.h">
+			</File>
 		</Filter>
 		<Filter
 			Name="资源文件"

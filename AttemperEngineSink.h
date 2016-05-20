@@ -116,32 +116,10 @@ public:
 	//读取事件
 	virtual bool OnEventTCPNetworkRead(TCP_Command Command, VOID * pData, WORD wDataSize, DWORD dwSocketID);
 
-	//连接处理
-protected:
-	//注册事件
-	bool OnTCPSocketMainRegister(WORD wSubCmdID, VOID * pData, WORD wDataSize);
-	//服务信息
-	bool OnTCPSocketMainServiceInfo(WORD wSubCmdID, VOID * pData, WORD wDataSize);
-	//远程服务
-	bool OnTCPSocketMainRemoteService(WORD wSubCmdID, VOID * pData, WORD wDataSize);
-
 	//网络事件
 protected:
 	//登录处理
 	bool OnTCPNetworkMainPCLogon(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//列表处理
-	bool OnTCPNetworkMainPCServerList(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//服务处理
-	bool OnTCPNetworkMainPCUserService(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//远程处理
-	bool OnTCPNetworkMainPCRemoteService(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
-
-	//手机事件
-protected:
-	//登录处理
-	bool OnTCPNetworkMainMBLogon(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//列表处理
-	bool OnTCPNetworkMainMBServerList(WORD wSubCmdID, VOID * pData, WORD wDataSize, DWORD dwSocketID);
 
 	//网络事件
 protected:
@@ -151,60 +129,6 @@ protected:
 	bool OnTCPNetworkSubPCLogonAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID);
 	//帐号注册
 	bool OnTCPNetworkSubPCRegisterAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-
-	//手机事件
-protected:
-	//I D 登录
-	bool OnTCPNetworkSubMBLogonGameID(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//帐号登录
-	bool OnTCPNetworkSubMBLogonAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-	//帐号注册
-	bool OnTCPNetworkSubMBRegisterAccounts(VOID * pData, WORD wDataSize, DWORD dwSocketID);
-
-	//游戏事件
-protected:
-	//登录成功
-	bool OnDBPCLogonSuccess(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//登录失败
-	bool OnDBPCLogonFailure(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//登录失败
-	bool OnDBPCLogonValidateMBCard(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//用户头像
-	bool OnDBPCUserFaceInfo(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//用户信息
-	bool OnDBPCUserIndividual(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//银行信息
-	bool OnDBPCUserInsureInfo(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//银行成功
-	bool OnDBPCUserInsureSuccess(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//银行失败
-	bool OnDBPCUserInsureFailure(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//用户信息
-	bool OnDBPCUserInsureUserInfo(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//操作成功
-	bool OnDBPCOperateSuccess(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//操作失败
-	bool OnDBPCOperateFailure(DWORD dwContextID, VOID * pData, WORD wDataSize);
-
-	//手机事件
-protected:
-	//登录成功
-	bool OnDBMBLogonSuccess(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//登录失败
-	bool OnDBMBLogonFailure(DWORD dwContextID, VOID * pData, WORD wDataSize);
-
-	//列表事件
-protected:
-	//游戏种类
-	bool OnDBPCGameTypeItem(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//游戏类型
-	bool OnDBPCGameKindItem(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//游戏节点
-	bool OnDBPCGameNodeItem(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//游戏定制
-	bool OnDBPCGamePageItem(DWORD dwContextID, VOID * pData, WORD wDataSize);
-	//游戏列表
-	bool OnDBPCGameListResult(DWORD dwContextID, VOID * pData, WORD wDataSize);
 
 	//辅助函数
 protected:

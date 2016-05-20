@@ -153,109 +153,14 @@ bool CAttemperEngineSink::OnEventTCPNetworkRead(TCP_Command Command, VOID * pDat
 //数据库事件
 bool CAttemperEngineSink::OnEventDataBase(WORD wRequestID, DWORD dwContextID, VOID * pData, WORD wDataSize)
 {
-	switch (wRequestID)
-	{
-	case DBO_GP_LOGON_SUCCESS:			//登录成功
-		{
-			return OnDBPCLogonSuccess(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_LOGON_FAILURE:			//登录失败
-		{
-			return OnDBPCLogonFailure(dwContextID,pData,wDataSize);
-		}
-	case DBR_GP_VALIDATE_MBCARD:
-		{
-			return OnDBPCLogonValidateMBCard(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_USER_FACE_INFO:			//用户头像
-		{
-			return OnDBPCUserFaceInfo(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_USER_INDIVIDUAL:		//用户信息
-		{
-			return OnDBPCUserIndividual(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_USER_INSURE_INFO:		//银行资料
-		{
-			return OnDBPCUserInsureInfo(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_USER_INSURE_SUCCESS:	//银行成功
-		{
-			return OnDBPCUserInsureSuccess(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_USER_INSURE_FAILURE:	//银行失败
-		{
-			return OnDBPCUserInsureFailure(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_USER_INSURE_USER_INFO:  //用户信息
-		{
-			return OnDBPCUserInsureUserInfo(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_OPERATE_SUCCESS:		//操作成功
-		{
-			return OnDBPCOperateSuccess(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_OPERATE_FAILURE:		//操作失败
-		{
-			return OnDBPCOperateFailure(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_GAME_TYPE_ITEM:			//类型子项
-		{
-			return OnDBPCGameTypeItem(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_GAME_KIND_ITEM:			//类型子项
-		{
-			return OnDBPCGameKindItem(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_GAME_NODE_ITEM:			//节点子项
-		{
-			return OnDBPCGameNodeItem(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_GAME_PAGE_ITEM:			//定制子项
-		{
-			return OnDBPCGamePageItem(dwContextID,pData,wDataSize);
-		}
-	case DBO_GP_GAME_LIST_RESULT:		//加载结果
-		{
-			return OnDBPCGameListResult(dwContextID,pData,wDataSize);
-		}
-	case DBO_MB_LOGON_SUCCESS:			//登录成功
-		{
-			return OnDBMBLogonSuccess(dwContextID,pData,wDataSize);
-		}
-	case DBO_MB_LOGON_FAILURE:			//登录失败
-		{
-			return OnDBMBLogonFailure(dwContextID,pData,wDataSize);
-		}
-	}
-
+	
 	return false;
 }
 
 //关闭事件
 bool CAttemperEngineSink::OnEventTCPSocketShut(WORD wServiceID, BYTE cbShutReason)
 {
-	//协调连接
-	if (wServiceID==NETWORK_CORRESPOND)
-	{
-		//重连判断
-		if (m_bNeekCorrespond==true)
-		{
-			//构造提示
-			TCHAR szDescribe[128]=TEXT("");
-			_sntprintf(szDescribe,CountArray(szDescribe),TEXT("与协调服务器的连接关闭了，%ld 秒后将重新连接"),m_pInitParameter->m_wConnectTime);
-
-			//提示消息
-			CTraceService::TraceString(szDescribe,TraceLevel_Warning);
-
-			//设置时间
-			ASSERT(m_pITimerEngine!=NULL);
-			m_pITimerEngine->SetTimer(IDI_CONNECT_CORRESPOND,m_pInitParameter->m_wConnectTime*1000L,1,0);
-
-			return true;
-		}
-	}
-
+	
 	return false;
 }
 

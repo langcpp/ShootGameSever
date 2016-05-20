@@ -104,6 +104,7 @@ VOID CInitParameter::LoadInitParameter()
 	} 
 	CopyMemory(m_ServiceAddress.szAddress, ip, 32);
 	m_wServicePort = 8888;
+	 
 	//协调信息
 	m_wCorrespondPort=IniData.ReadInt(TEXT("Correspond"),TEXT("ServicePort"),m_wCorrespondPort);
 	IniData.ReadEncryptString(TEXT("ServerInfo"),TEXT("CorrespondAddr"),NULL,m_CorrespondAddress.szAddress,CountArray(m_CorrespondAddress.szAddress));
